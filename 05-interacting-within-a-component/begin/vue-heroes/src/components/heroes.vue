@@ -62,6 +62,19 @@
                 />
               </div>
               <div class="field">
+                <label class="label" for="originDate">origin date</label>
+                <input
+                  type="date"
+                  class="input"
+                  id="originDate"
+                  v-model="selectedHero.originDate"
+                />
+                <p class="comment">
+                  My origin story began on
+                  {{ selectedHero.originDate | shortDate }}
+                </p>
+              </div>
+              <div class="field">
                 <label class="label" for="capeCounter">cape counter</label>
                 <input
                   class="input"
@@ -98,7 +111,10 @@
 </template>
 
 <script>
-import { data } from '../../../../../07-accessing-data/begin/vue-heroes/src/shared';
+// import { data } from '../../../../../07-accessing-data/begin/vue-heroes/src/shared';
+import { format } from 'date-fns';
+const inputDateFormat = 'YYYY-MM-DD';
+const displayDateFormat = 'D MMM YYYY';
 
 const ourHeroes = [
   {
@@ -106,6 +122,7 @@ const ourHeroes = [
     firstName: 'Ella',
     lastName: 'Papa',
     capeCounter: 1,
+    originDate: format(new Date(2013, 3, 3, inputDateFormat)),
     description: 'fashionista',
   },
   {
@@ -113,6 +130,7 @@ const ourHeroes = [
     firstName: 'Madelyn',
     lastName: 'Papa',
     capeCounter: 3,
+    originDate: format(new Date(1999, 8, 1), inputDateFormat),
     description: 'the cat whisperer',
   },
   {
@@ -120,6 +138,7 @@ const ourHeroes = [
     firstName: 'Haley',
     lastName: 'Papa',
     capeCounter: 2,
+    originDate: format(new Date(2015, 3, 4), inputDateFormat),
     description: 'pen wielder',
   },
   {
@@ -127,6 +146,7 @@ const ourHeroes = [
     firstName: 'Landon',
     lastName: 'Papa',
     capeCounter: 0,
+    originDate: format(new Date(2000, 12, 1), inputDateFormat),
     description: 'arc trooper',
   },
 ];
@@ -196,6 +216,11 @@ export default {
         console.log(`Watcher evaluated. old=${oldValue}, new=${newValue}`);
         this.handleTheCapes(newValue);
       },
+    },
+  },
+  filters: {
+    shortDate: function(value) {
+      return format(value, displayDateFormat);
     },
   },
 };
