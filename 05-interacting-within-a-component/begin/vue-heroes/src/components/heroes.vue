@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import { data } from "../../../../../07-accessing-data/begin/vue-heroes/src/shared";
+
 const ourHeroes = [
   {
     id: 10,
@@ -111,6 +113,13 @@ const ourHeroes = [
 ];
 export default {
   name: 'Heroes',
+  data() {
+    return {
+      heroes: ourHeroes,
+      selectedHero: undefined,
+      message: '',
+    };
+  },
   methods: {
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
