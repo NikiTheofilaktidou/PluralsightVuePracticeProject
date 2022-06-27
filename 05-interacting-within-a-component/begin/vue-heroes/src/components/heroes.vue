@@ -27,7 +27,7 @@
       <div class="column is-4" v-if="selectedHero">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title">{{ selectedHero.firstName }}</p>
+            <p class="card-header-title">{{ fullName }}</p>
           </header>
           <div class="card-content">
             <div class="content">
@@ -120,6 +120,11 @@ export default {
       message: '',
     };
   },
+  computed: {
+    fullName() {
+      return `${this.selectedHero.firstName} ${this.selectHero.lastName}`;
+    },
+  },
   methods: {
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
@@ -131,7 +136,7 @@ export default {
           this.capeMessage = 'One is all I need';
           break;
         case 2:
-          this.capeMessage = 'Alway have a spare';
+          this.capeMessage = 'Always have a spare';
           break;
         default:
           this.capeMessage = 'You can never have enough capes';
