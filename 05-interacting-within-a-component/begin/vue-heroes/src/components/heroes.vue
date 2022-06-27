@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import { data } from "../../../../../07-accessing-data/begin/vue-heroes/src/shared";
+import { data } from '../../../../../07-accessing-data/begin/vue-heroes/src/shared';
 
 const ourHeroes = [
   {
@@ -122,7 +122,7 @@ export default {
   },
   computed: {
     fullName() {
-      return `${this.selectedHero.firstName} ${this.selectHero.lastName}`;
+      return `${this.selectedHero.firstName} ${this.selectedHero.lastName}`;
     },
   },
   methods: {
